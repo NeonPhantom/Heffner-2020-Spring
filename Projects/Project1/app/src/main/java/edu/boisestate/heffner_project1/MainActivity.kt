@@ -36,9 +36,7 @@ class MainActivity : AppCompatActivity() {
         val charCount = hasRestarted?.count().let {
             Log.d("BSU", "Not null! Value is ${it}")
         }
-        //val localTextView = SignUpTitle
 
-//        val usersList = UsersRepository.usersList()
         for (currentUser in UserStorage.usersList()){
             Log.d("BSU", currentUser.username)
         }
@@ -75,21 +73,4 @@ class MainActivity : AppCompatActivity() {
         UserStorage.removeAll()
         super.onDestroy()
     }
-
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            R.id.action_first -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }*/
 }
