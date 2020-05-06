@@ -1,6 +1,26 @@
 package edu.boisestate.heffner_final
 
+import io.objectbox.annotation.Id
+import io.objectbox.kotlin.query
+import io.objectbox.query.QueryBuilder
+
+
+//@Entity
 object Events {
+
+    @Id var id:Long = 0
+
+    //private val scoreList = mutableListOf<ScoreItem>()
+    private val scoreList = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+    private val scoreBox = ObjectBox.boxStore.boxFor(ScoreItem::class.java)
+    /*val query = scoreBox.query {
+        order(ScoreItem_.scorePriority, QueryBuilder.DESCENDING)
+    }
+    init {
+        val results = query.find()
+        scoreList.addAll(results)
+    }*/
 
     private val titleList = mutableListOf("Regular Event", "Jumpers", "Chances", "Tunnelers", "Weavers", "Touch n Go",
         "Hoopers", "Barrelers", "Gamblers")
@@ -16,9 +36,8 @@ object Events {
         "The Barrelers class is a special skills class that emphasizes handling via a numbered course comprised of barrels, hoops and tunnels.\n" +
                 "The goal of the Barrelers class is to demonstrate the handler’s ability to direct their dog through a series of ground-based obstacles – hoops, tunnels and barrels.",
         "The Gamblers class is a strategy game combined with a small distance test, referred to as the Gamble. Handlers will have a set amount of time to complete the course based on their dogs jumping height. All NADAC approved obstacles can be placed on course.")
-    private var scoreList = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
 
-    private var index = 0;
+    private var index = 0
 
     fun getTitle(): String {
         return titleList[index]
@@ -28,12 +47,23 @@ object Events {
         return eventList[index]
     }
 
-    fun getScore(): Int {
-        return scoreList[index]
+    fun getScore(number: Int): Int {
+        if (scoreList[number] == null) {
+            return 0
+        } else {
+            return scoreList[number]
+        }
+    }
+
+    fun getIndex(): Int {
+        return index
     }
 
     fun setScore(number: Int) {
         scoreList[index] = number
+        //val newScore = ScoreItem(score = number, scorePriority = getIndex())
+        //scoreList.add(number, newScore)
+        //scoreBox.put(newScore)
     }
 
     fun setIndex(number: Int) {

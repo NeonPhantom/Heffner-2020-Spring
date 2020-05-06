@@ -12,7 +12,7 @@ class Event : AppCompatActivity() {
         setContentView(R.layout.event)
 
         eventTitle.text = Events.getTitle()
-        eventInfo.text = "Score: " + Events.getScore() + "\n" + Events.getEvent()
+        eventInfo.text = "Score: " + Events.getScore(Events.getIndex()) + "\n" + Events.getEvent()
 
         //val extraString:String = intent.getStringExtra(KEY_EXTRA)
 
@@ -41,9 +41,5 @@ class Event : AppCompatActivity() {
         val activity = AppCompatActivity()
 
     }
-
-    //TODO: Have a number value from the main activity (if event 1 is picked, then "1" is the number)
-    //TODO: Have the title be listOfTitles[1]
-    //TODO: Have the description be descriptions[1]
 
 }

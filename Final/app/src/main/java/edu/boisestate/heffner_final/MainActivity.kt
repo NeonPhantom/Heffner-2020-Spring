@@ -5,28 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        nameText.text = User.name
-        dogText.text = User.dogName
-
         setupUI()
     }
 
     private fun setupUI() {
-        editButton.setOnClickListener {
-
-
-            val intent = Intent(this, EnterName::class.java).apply {
-                //putExtra(EditEvent.KEY_EXTRA, "new value")
-            }
-            startActivity(intent)
-
-        }
 
         event1Button.setOnClickListener {
             Events.setIndex(0)
